@@ -70,7 +70,7 @@ namespace TranslateForDesktop
         // 翻译
         private void Translate()
         {
-            var translator=new Goo
+            var translator = new GoogleTranslator();
         }
 
         // 在输出框显示翻译结果
