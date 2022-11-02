@@ -40,25 +40,16 @@ namespace TranslateForDesktop
         // 监视输入框的数据更新
         private void UpdateOriginData(object sender, TextChangedEventArgs args)
         {
-            StringCollection originData = new StringCollection();
-            originData = GetOriginData();
+            String originData = GetOriginData();
             CheckLanguage();
-            Translate();
-            ShowResult(originData);
+            String res = Translate(originData);
+            ShowResult(res);
         }
         
         // 获取输入框输入的内容
-        private StringCollection GetOriginData()
+        private String GetOriginData()
         {
-            StringCollection lines = new StringCollection();
-            int lineCount = OriginBox.LineCount;
-
-            for(int line = 0; line < lineCount; line++)
-            {
-                lines.Add(OriginBox.GetLineText(line));
-            }
-
-            return lines;
+            return OriginBox.GetLineText(0);
         }
 
         // 自动检测语言（中or英）
@@ -68,26 +59,23 @@ namespace TranslateForDesktop
         }
 
         // 翻译
-        private void Translate()
+        private String Translate(String s)
         {
-            var translator = new GoogleTranslator();
+            Request req = new Request();
+            String res = req.Translate(s, "en", "zh").Trans_result[0].Dst;
+            return res;
         }
 
         // 在输出框显示翻译结果
-        private void ShowResult(StringCollection originData)
+        private void ShowResult(String s)
         {
-            foreach(String s in originData)
-            {
-                OutputBox.Text = s;
-            }
-            // OutputBox.Text = "This is an English sequence.";
+            OutputBox.Text = s;
         }
 
         // 点击按钮切换翻译方式
         private void ExchangeBtn_Click(object sender, RoutedEventArgs e)
         {
-            StringCollection str = new StringCollection();
-            str.Add("test");
+            String str = "test";
             ShowResult(str);
         }
 
