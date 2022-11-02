@@ -40,9 +40,9 @@ namespace TranslateForDesktop
                 //{
                 //    sb.Append(b);
                 //}
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(s);
+                byte[] inputBytes = System.Text.Encoding.UTF8.GetBytes(s);
                 byte[] hashBytes = md5.ComputeHash(inputBytes);
-                return Convert.ToHexString(hashBytes);
+                return Convert.ToHexString(hashBytes).ToLower();
             }
             //return sb.ToString();
         }
@@ -53,13 +53,13 @@ namespace TranslateForDesktop
             public string err_msg { set; get; }
             public string from { set; get; }
             public string to { set; get; }
-            public TranslateContent[] Trans_result { set; get; }
+            public TranslateContent[] trans_result { set; get; }
         }
 
         public class TranslateContent
         {
-            public string Src { set; get; }
-            public string Dst { set; get; }
+            public string src { set; get; }
+            public string dst { set; get; }
         }
     }
 }

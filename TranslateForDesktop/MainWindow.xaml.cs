@@ -23,6 +23,8 @@ namespace TranslateForDesktop
     {
         private Point _pressedPosition;
         private bool _isDragMoved = false;
+        private string languageFrom = "en";
+        private string languageTo = "zh";
 
         public MainWindow()
         {
@@ -33,16 +35,27 @@ namespace TranslateForDesktop
         private void Window_Deactivated(object sender, EventArgs e)
         {
             Window window = sender as Window;
-            //window.Topmost = true;
+            window.Topmost = true;
         }
 
         // 监视输入框的数据更新
-        private void UpdateOriginData(object sender, TextChangedEventArgs args)
+        //private void UpdateOriginData(object sender, TextChangedEventArgs args)
+        //{
+        //    String originData = GetOriginData();
+        //    CheckLanguage();
+        //    String res = Translate(originData);
+        //    ShowResult(res);
+        //}
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            String originData = GetOriginData();
-            CheckLanguage();
-            String res = Translate(originData);
-            ShowResult(res);
+            if(e.Key == Key.Enter)
+            {
+                String originData = GetOriginData();
+                CheckLanguage();
+                String res = Translate(originData);
+                ShowResult(res);
+            }
         }
         
         // 获取输入框输入的内容
@@ -61,7 +74,7 @@ namespace TranslateForDesktop
         private String Translate(String s)
         {
             Request req = new Request();
-            String res = req.Translate(s, "en", "zh").Trans_result[0].Dst;
+            String res = req.Translate(s, languageFrom, languageTo).trans_result[0].dst;
             return res;
         }
 
@@ -74,8 +87,16 @@ namespace TranslateForDesktop
         // 点击按钮切换翻译方式
         private void ExchangeBtn_Click(object sender, RoutedEventArgs e)
         {
-            String str = "test";
-            ShowResult(str);
+            String stmp = languageTo;
+            languageTo = languageFrom;
+            languageFrom = stmp;
+        }
+
+        // 点击按钮清空输入框和输出框
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OriginBox.Text = "";
+            OutputBox.Text = "";
         }
 
         // 记录鼠标按下位置

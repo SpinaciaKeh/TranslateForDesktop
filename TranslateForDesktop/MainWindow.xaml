@@ -6,10 +6,13 @@
         xmlns:local="clr-namespace:TranslateForDesktop"
         mc:Ignorable="d"
         Deactivated="Window_Deactivated"
+        KeyDown="Window_KeyDown"
         PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown"
         PreviewMouseMove="Window_PreviewMouseMove"
         PreviewMouseLeftButtonUp="Window_PreviewMouseLeftButtonUp"
-        Title="Translate" Height="Auto" Width="Auto" WindowStyle="None">
+        Title="Translate" 
+        Icon="Logo/icons8-google-translate-new-100.ico"
+        Height="Auto" Width="Auto" WindowStyle="None">
     <Grid x:Name="LayoutRoot" Background="#FAEFDE" Width="Auto" Height="Auto" MinHeight="40" MinWidth="90">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -19,10 +22,22 @@
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBox x:Name="OriginBox" Grid.Row="0" Grid.Column="0" Margin="2" TextChanged="UpdateOriginData"/>
-        <Button x:Name="ExchangeBtn" Grid.Row="0" Grid.Column="1" Margin="0 2" Click="ExchangeBtn_Click">
-            <Image Source="C:\Users\dusks\source\repos\TranslateForDesktop\icon/icons8-replace-24.png"></Image>
-        </Button>
+        <TextBox x:Name="OriginBox" Grid.Row="0" Grid.Column="0" Margin="2"/>
+        <Grid Grid.Row="0" Grid.Column="1" Margin="0 2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="ExchangeBtn" Grid.Row="0" Grid.Column="0" Margin="0 0 0 1" Click="ExchangeBtn_Click">
+                <Image Source="C:\Users\dusks\source\repos\TranslateForDesktop\icon/icons8-replace-24.png"></Image>
+            </Button>
+            <Button x:Name="DeleteBtn" Grid.Row="1" Grid.Column="0" Margin="0 1 0 0" Click="DeleteBtn_Click">
+                <Image Source="C:\Users\dusks\source\repos\TranslateForDesktop\icon/icons8-remove-24 (1).png"></Image>
+            </Button>
+        </Grid>
         <TextBox x:Name="OutputBox" Grid.Row="0" Grid.Column="2" Margin="2 2 10 2" />
     </Grid>
 </Window>
