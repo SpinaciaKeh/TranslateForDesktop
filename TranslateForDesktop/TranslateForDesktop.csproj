@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GoogleApi\GoogleApi\GoogleApi.csproj" />
-    <ProjectReference Include="..\GoogleTranslateApi\GoogleTranslateFreeApi\GoogleTranslateFreeApi.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>
