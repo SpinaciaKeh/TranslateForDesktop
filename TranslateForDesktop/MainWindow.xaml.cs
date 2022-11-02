@@ -33,8 +33,7 @@ namespace TranslateForDesktop
         private void Window_Deactivated(object sender, EventArgs e)
         {
             Window window = sender as Window;
-            window.Topmost = true;
-            // Console.WriteLine("put it in top level");
+            //window.Topmost = true;
         }
 
         // 监视输入框的数据更新

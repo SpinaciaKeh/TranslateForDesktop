@@ -16,6 +16,7 @@ namespace TranslateForDesktop
             string salt = new Random().Next().ToString();
             string originStr = appid + content + salt + key;
             string sign = md5Compute(originStr);
+            string test = md5Compute("2015063000000001apple143566028812345678");
             string FullRequest = "http://api.fanyi.baidu.com/api/trans/vip/translate?q=" + content + "&from=" + languageFrom + "&to=" + languageTo + "&appid=" + appid + "&salt=" + salt + "&sign=" + sign;
             string outputData=new WebClient().DownloadString(FullRequest);
             return JsonSerializer.Deserialize<RequestResult>(outputData); 
@@ -34,13 +35,16 @@ namespace TranslateForDesktop
             StringBuilder sb = new StringBuilder();
             using(MD5 md5 = MD5.Create())
             {
-                byte[] hashValue = md5.ComputeHash(Encoding.UTF8.GetBytes(s));
-                foreach(byte b in hashValue)
-                {
-                    sb.Append(b);
-                }
+                //byte[] hashValue = md5.ComputeHash(Encoding.UTF8.GetBytes(s));
+                //foreach(byte b in hashValue)
+                //{
+                //    sb.Append(b);
+                //}
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(s);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                return Convert.ToHexString(hashBytes);
             }
-            return sb.ToString();
+            //return sb.ToString();
         }
 
         public class RequestResult
