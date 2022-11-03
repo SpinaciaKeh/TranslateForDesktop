@@ -11,8 +11,8 @@ namespace TranslateForDesktop
     {
         public RequestResult Translate(string content, string languageFrom,string languageTo)
         {
-            string appid = "20221101001429865";
-            string key = "UI8ryP4MwW0iFGFJpkRp";
+            string appid = "your_appid";
+            string key = "your_key";
             string salt = new Random().Next().ToString();
             string originStr = appid + content + salt + key;
             string sign = md5Compute(originStr);
