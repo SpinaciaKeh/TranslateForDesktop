@@ -11,12 +11,11 @@ namespace TranslateForDesktop
     {
         public RequestResult Translate(string content, string languageFrom,string languageTo)
         {
-            string appid = "your_appid";
-            string key = "your_key";
+            string appid = common.Appid;
+            string key = common.Key;
             string salt = new Random().Next().ToString();
             string originStr = appid + content + salt + key;
             string sign = md5Compute(originStr);
-            string test = md5Compute("2015063000000001apple143566028812345678");
             string FullRequest = "http://api.fanyi.baidu.com/api/trans/vip/translate?q=" + content + "&from=" + languageFrom + "&to=" + languageTo + "&appid=" + appid + "&salt=" + salt + "&sign=" + sign;
             string outputData=new WebClient().DownloadString(FullRequest);
             return JsonSerializer.Deserialize<RequestResult>(outputData); 

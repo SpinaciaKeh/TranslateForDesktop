@@ -11,6 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="icon\delete.png" />
+    <None Remove="icon\exchange.png" />
     <None Remove="Logo\icons8-google-translate-new-100.ico" />
   </ItemGroup>
 
@@ -19,6 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="icon\delete.png" />
+    <Resource Include="icon\exchange.png" />
     <Resource Include="Logo\icons8-google-translate-new-100.ico" />
   </ItemGroup>
 

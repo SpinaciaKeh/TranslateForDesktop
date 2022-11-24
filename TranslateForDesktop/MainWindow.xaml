@@ -33,10 +33,10 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Button x:Name="ExchangeBtn" Grid.Row="0" Grid.Column="0" Margin="0 0 0 1" Click="ExchangeBtn_Click">
-                <Image Source="C:\Users\dusks\source\repos\TranslateForDesktop\icon/icons8-replace-24.png"></Image>
+                <Image Source="pack://application:,,,/icon/exchange.png"></Image>
             </Button>
             <Button x:Name="DeleteBtn" Grid.Row="1" Grid.Column="0" Margin="0 1 0 0" Click="DeleteBtn_Click">
-                <Image Source="C:\Users\dusks\source\repos\TranslateForDesktop\icon/icons8-remove-24 (1).png"></Image>
+                <Image Source="pack://application:,,,/icon/delete.png"></Image>
             </Button>
         </Grid>
         <TextBox x:Name="OutputHint" Grid.Row="0" Grid.Column="2" Margin="1" IsReadOnly="True" Background="White" Foreground="#cacaca" FontStyle="Italic"/>
